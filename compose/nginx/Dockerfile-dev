@@ -1,0 +1,14 @@
+FROM nginx:latest
+MAINTAINER Marc Llopart "mllopart@the-fox-lab.com"
+
+ADD ./compose/nginx/nginx_dev.conf /etc/nginx/conf.d
+
+
+# installs the `ps` command in the nginx image
+RUN apt-get update && apt-get install -y procps
+
+ADD ./compose/nginx/start.sh /start.sh
+# ADD nginx-secure.conf /etc/nginx/nginx-secure.conf
+# ADD dhparams.pem /etc/ssl/private/dhparams.pem
+# CMD /start.sh
+
